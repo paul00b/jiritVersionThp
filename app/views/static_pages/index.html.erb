@@ -2,7 +2,7 @@
     <div class="container">
       <% if user_signed_in? && current_user.username.capitalize == "Jordane" %>
       <h1> Welcome <%= current_user.username.capitalize %> ! </h1>
-      <p> http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/pig-nose.png </p>
+      <img src ="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-11/256/pig-nose.png">  </img>
 
       <% elsif user_signed_in?   %>
       <h1> Welcome <%= current_user.username.capitalize %> ! </h1>
