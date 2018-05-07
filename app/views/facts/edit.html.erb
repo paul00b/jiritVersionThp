@@ -1,6 +1,26 @@
-<h1>Editing Fact</h1>
+<div class="container">
+  <div class="row">
+      <div class="col-md-5">
+        <h1>Edit Fact with payement</h1>
 
-<%= render 'form', fact: @fact %>
+        <%= render 'form', fact: @fact %>
 
-<%= link_to 'Show', @fact %> |
-<%= link_to 'Back', facts_path %>
+
+        <%= link_to 'Back', facts_path %>
+        <%= link_to 'Show', @fact %>
+      </div>
+      <div class="col-md-1"></div>
+
+
+      <div class="col-md-5">
+        <h1>Edit Fact without payement</h1>
+
+        <%= render 'form2', fact: @fact %>
+
+
+        <%= link_to 'Back', facts_path %>
+        <%= link_to 'Show', @fact %>
+      </div>
+  </div>
+
+</div>
