@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-   before_action :sanitize_devise_params, only: [:create]
+   before_action :sanitize_devise_params, only: [:create], if: :devise_controller?
 
 
    def sanitize_devise_params

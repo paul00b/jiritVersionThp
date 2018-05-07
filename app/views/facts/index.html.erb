@@ -1,0 +1,38 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>All the facts</h1>
+<hr class="ligne_ombre">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Source</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @facts.each do |fact| %>
+      <tr>
+        <td><%= fact.title %></td>
+        <td><%= fact.body %></td>
+        <td><%= fact.source %></td>
+        <% if user_signed_in? && fact.creator_id == current_user.id %>
+          <td><%= link_to fact  do %><button type="button" class="btn btn-primary btn-small">Show</button> <%end%></td>
+          <td><%= link_to edit_fact_path(fact) do %> <button type="button" class="btn btn-success btn-small">Edit</button> <%end%></td>
+          <td><%= link_to fact, method: :delete, data: { confirm: 'Are you sure?' }  do %> <button type="button" class="btn btn-danger btn-small">Delete</button> <%end%></td>
+        <% else %>
+          <td><%= link_to fact  do %><button type="button" class="btn btn-primary btn-small">Show</button> <%end%></td>
+        <% end %>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<hr class="ligne_ombre">
+<%= link_to new_fact_path do %><button type="button" class="btn btn-warning">Create a fact</button> <%end%>
+</div>

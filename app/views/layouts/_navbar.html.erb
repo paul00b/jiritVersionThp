@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse ">
+<nav class="navbar navbar-inverse navbar-fixed-top ">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">&nbsp J_RIT &nbsp</a>
+      <a class="navbar-brand" href="<%= root_path %>">&nbsp J_RIT &nbsp</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
 
@@ -15,10 +15,15 @@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Facts <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">All the facts</a></li>
-              <li><a href="#">My facts</a></li>
+              <li><a href="<%= facts_path %>">All the facts</a></li>
+              <li><a href="<%= myfacts_path %>">My facts</a></li>
+              <% if user_signed_in? %>
+                <li><a href="<%= new_fact_path %>">Add a fact</a></li>
+              <%else%>
+              <%end%>
             </ul>
           </li>
+
           <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -28,14 +33,18 @@
                 <li><a href="#"> Catégory 4</a></li>
               </ul>
             </li>
-        <% if user_signed_in? %>
-        <li><a href="<%= edit_user_registration_path %>">My profil</a></li>
-        <% end %>
+
       </ul>
       <% if user_signed_in? %>
       <ul class="nav navbar-nav navbar-right">
-        <li> <a>Bienvenue <%= current_user.username %> !</a></li>
-        <li><%= link_to destroy_user_session_path, method: :delete  do %><span class="glyphicon glyphicon-log-out"></span>  Logout <% end %></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bienvenue <%= current_user.username %> ! <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">See my profil</a></li>
+              <li><a href="<%= edit_user_registration_path %>">Edit my profil</a></li>
+            </ul>
+          </li>
+          <li><%= link_to destroy_user_session_path, method: :delete  do %><span class="glyphicon glyphicon-log-out"></span>  Logout <% end %></li>
 
       </ul>
       <% else %>

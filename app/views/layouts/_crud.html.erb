@@ -1,0 +1,8 @@
+<% if user_signed_in? && @fact.creator_id == current_user.id %>
+  <td><%= link_to 'Show', fact %></td>
+  <td><%= link_to 'Edit', edit_fact_path(fact) %></td>
+  <td><%= link_to 'Destroy', fact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% else %>
+  <td><%= link_to 'Show', fact %></td>
+  <% flash[:notice] = "Connectez-vous" %>
+<% end %>
